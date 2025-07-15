@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpfmy1y5inbsu"]
+
+[ext_resource type="Texture2D" uid="uid://bmup70y7trvm2" path="res://ennemie.png" id="1_4nbo3"]
+[ext_resource type="Script" uid="uid://dh56k11fo02cx" path="res://base_ennemy.gd" id="1_yb4ka"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yb4ka"]
+size = Vector2(53, 54)
+
+[node name="Ennemie" type="Node2D"]
+position = Vector2(68, -5)
+scale = Vector2(0.8, 0.8)
+
+[node name="BaseEnnemy" type="Area2D" parent="."]
+position = Vector2(-1.24999, -12.5)
+script = ExtResource("1_yb4ka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseEnnemy"]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_yb4ka")
+
+[node name="Sprite2D" type="Sprite2D" parent="BaseEnnemy"]
+position = Vector2(1.19208e-07, -1.25)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_4nbo3")
+
+[node name="LeftLimit" type="Marker2D" parent="."]
+position = Vector2(-136.25, 43.75)
+
+[node name="RightLimit" type="Marker2D" parent="."]
+position = Vector2(143.75, 51.25)
+
+[connection signal="body_entered" from="BaseEnnemy" to="BaseEnnemy" method="_on_body_entered"]

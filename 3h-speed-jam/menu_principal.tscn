@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://byy7jdp3jf0p0"]
+
+[ext_resource type="Script" uid="uid://bejvxpw8x6odc" path="res://menu_principal.gd" id="1_bj1uy"]
+
+[sub_resource type="Gradient" id="Gradient_x7udj"]
+offsets = PackedFloat32Array(0, 0.00833333)
+colors = PackedColorArray(0, 0, 0, 1, 0.34902, 0.694118, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bj1uy"]
+gradient = SubResource("Gradient_x7udj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7udj"]
+font_size = 64
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bj1uy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 643.0
+texture = SubResource("GradientTexture1D_bj1uy")
+
+[node name="titre" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -298.0
+offset_top = 97.0
+offset_right = 273.0
+offset_bottom = 276.0
+grow_horizontal = 2
+text = "MENU PRINCIPALE
+"
+label_settings = SubResource("LabelSettings_x7udj")
+
+[node name="START" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 323.0
+offset_right = -38.0
+offset_bottom = 355.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+text = "START
+"
+
+[node name="QUIT" type="Button" parent="."]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 408.0
+offset_right = 538.0
+offset_bottom = 439.0
+scale = Vector2(2, 2)
+text = "QUIT
+"
+
+[connection signal="pressed" from="START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="QUIT" to="." method="_on_quit_pressed"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbpr35is3f4yk"]
+
+[ext_resource type="PackedScene" uid="uid://byy7jdp3jf0p0" path="res://menu_principal.tscn" id="1_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bb0rci52nw8cb" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://dpfmy1y5inbsu" path="res://ennemie.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://cdg0urgyfxa17" path="res://pause_menu.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://baxl21c56y26c" path="res://reboot_zone.tscn" id="5_f2txt"]
+
+[sub_resource type="Gradient" id="Gradient_5xgho"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u52ul"]
+gradient = SubResource("Gradient_5xgho")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
+size = Vector2(256, 46)
+
+[node name="level" type="Node2D"]
+position = Vector2(5, 239)
+
+[node name="MenuPrincipal" parent="." instance=ExtResource("1_0b4ue")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_oi3di")]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(892, 4)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(75, 26)
+scale = Vector2(1, 46.5)
+texture = SubResource("GradientTexture1D_u52ul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(75, 26)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(86, -1)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(75, 26)
+scale = Vector2(1, 46.5)
+texture = SubResource("GradientTexture1D_u52ul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(75, 26)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(497, 29)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(75, 26)
+scale = Vector2(1, 46.5)
+texture = SubResource("GradientTexture1D_u52ul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(75, 26)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="player" parent="." instance=ExtResource("1_u52ul")]
+position = Vector2(562, -6)
+
+[node name="rokerwork" parent="." instance=ExtResource("2_vonw3")]
+position = Vector2(107, -23)
+scale = Vector2(0.5, 0.5)
+
+[node name="BaseEnnemy" parent="rokerwork" index="0"]
+position = Vector2(58.75, 15)
+
+[node name="LeftLimit" parent="rokerwork" index="1"]
+position = Vector2(-80, 48.75)
+
+[node name="RightLimit" parent="rokerwork" index="2"]
+position = Vector2(217.5, 48.75)
+
+[node name="rokerwork2" parent="." instance=ExtResource("2_vonw3")]
+position = Vector2(927, -18)
+scale = Vector2(0.5, 0.5)
+
+[node name="BaseEnnemy" parent="rokerwork2" index="0"]
+position = Vector2(58.75, 15)
+
+[node name="LeftLimit" parent="rokerwork2" index="1"]
+position = Vector2(-80, 48.75)
+
+[node name="RightLimit" parent="rokerwork2" index="2"]
+position = Vector2(217.5, 48.75)
+
+[node name="RebootZone" parent="." instance=ExtResource("5_f2txt")]
+position = Vector2(565, 160)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" parent="RebootZone" index="0"]
+position = Vector2(210, 480)
+
+[editable path="rokerwork"]
+[editable path="rokerwork2"]
+[editable path="RebootZone"]
